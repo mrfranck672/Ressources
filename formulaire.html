@@ -78,7 +78,7 @@
                 }
               </script>
 
-            <TD id="T3"></TD> 
+            <TD id="T3"></TD>
 
 
           <TR>
@@ -87,6 +87,27 @@
               <input id="C4" type="text" NAME=localite SIZE=20 MAXLENGTH=80 VALUE="">
 
               <!-- Vérifions la différence -->
+              <script>
+                function verifierpostal() {
+                  //  difference
+                  const Y = document.getElementById('C3');
+                  const Z = document.getElementById('C3');
+                  const post = Y.value.trim();
+                  const pos = Z.value.trim();
+                  // afficher message
+                  // var AB = document.getElementById('C4');
+                  // const Tro = AB.value.trim();
+
+
+                  if (post == 3000, pos == 4000) {
+                    post.push(Y);
+                    pos.push(Z);
+                    miseAJour();
+                  } else {
+                    alert(' Le nombre doit etre 3000 ou 4000 ');
+                  }
+                }
+              </script>
 
             <TD id="T4"></TD>
           <TR>
@@ -165,7 +186,12 @@
       <TABLE BORDER="0" CELLSPACING="0" CELLPADDING="10" WIDTH="95%">
         <TR>
           <TH>
-            <input type=button VALUE="  Soumettre formulaire  " onclick=afficher()>
+            <input id="loc" type=button VALUE="  Enregistrer  " onclick=afficher()>
+            <!-- local storage -->
+            <script>
+
+            </script>
+
             <input type=button VALUE="  Vérification formulaire " onclick=forme()>
             <input type=RESET VALUE=" Effacer ">
           </TH>
