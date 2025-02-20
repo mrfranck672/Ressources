@@ -56,6 +56,26 @@
           <TR>
             <TD><B>Adresse</B>
             <TD> <textarea id="C2" NAME=adresse COLS=50 ROWS=2 WRAP=PHYSICAL onChange="verifieradresse()"></textarea>
+
+              <script>
+                const Min = 20;
+
+                function verifieradresse() {
+                  const cham = document.getElementById('C2');
+                  const message = document.getElementById('T3');
+                  const longueur = cham.value.length;
+
+                  if (longueur < Min) {
+                    // alert(' Veuillez entrer au moins 8 caractères ');
+                    message.textContent = `Veuillez entrer au moins ${Min} caractères`;
+                    message.style.color = 'red';
+                  } else {
+                    message.textContent = `Nombre de caractères valide (${Min})`;
+                    message.style.color = 'green';
+                  }
+                }
+              </script>
+
             <TD id="T3"></TD>
 
           <TR>
