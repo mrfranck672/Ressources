@@ -1,15 +1,16 @@
-/* <style> 
-input[type=text ] {
-    padding: 12px 20px;
+input[type=text] {
+    padding: 12px;
     margin: 8px 0;
     box-sizing: border-box;
     border: 1px solid #555;
     outline: none;
 }
+
 textarea:focus {
     background-color: lightblue;
-	}
+}
+
 input[type=text]:focus {
     background-color: lightblue;
 }
-</style> */
+
