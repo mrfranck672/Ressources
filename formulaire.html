@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <title>Document</title>
 </head>
+
 <body>
-  
+
   <form name="F">
 
     <fieldset style="background: #FFFFDD ;">
       <legend id="titre" style="background: #FFFF88 ;"><B>Client</B></legend>
-  
+
       <center>
         <table BORDER="0" CELLSPACING="0" CELLPADDING="5" WIDTH="100%">
-  
+
           <tr>
             <td WIDTH="17%"><B>Civilité</b>
             <td WIDTH="45%">
@@ -28,29 +30,90 @@
           <TR>
             <TD><B>Nom / Prénom</B>
             <TD> <input id="C1" type="text" NAME=nom SIZE=50 MAXLENGTH=80 onChange="verifiernom()">
-            <TD id="T2"></TD>
+            <TD id="T2">
+              <script>
+
+                const min = 8;
+                const max = 20;
+
+                function verifiernom() {
+                  const champ = document.getElementById('C1');
+                  const message = document.getElementById('T2');
+                  const longueur = champ.value.length;
+
+                  if (longueur < min) {
+                    // alert(' Veuillez entrer au moins 8 caractères ');
+                    message.textContent = `Veuillez entrer au moins ${min} caractères`;
+                    message.style.color = 'red';
+                  } else {
+                    message.textContent = `Nombre de caractères valide (${min}-${max})`;
+                    message.style.color = 'green';
+                  }
+                }
+
+              </script>
+            </TD>
           <TR>
             <TD><B>Adresse</B>
             <TD> <textarea id="C2" NAME=adresse COLS=50 ROWS=2 WRAP=PHYSICAL onChange="verifieradresse()"></textarea>
             <TD id="T3"></TD>
-  
+
           <TR>
             <TD><B>No postal / Localité</B>
             <TD> <input id="C3" type="text" NAME=no_postal Size=5 MAXLENGTH=4 onChange="verifierpostal()">
               <input id="C4" type="text" NAME=localite SIZE=20 MAXLENGTH=80 VALUE="">
             <TD id="T4"></TD>
           <TR>
-            <TD><B>Pays</B>
-            <TD> <SELECT id="lepays" NAME=pays>
-                <OPTION>Tunisie
-                <OPTION>Algérie
-                <OPTION SELECTED>Maroc
+            <TD><B>Pays</B></TD>
+            <TD>
+              <SELECT id="lepays" NAME=pays>
+                <option> Tunisie </option>
+                <option> Algérie </option>
+                <option> Maroc </option>
               </SELECT>
+
               <B> Ajouter pays</B>
-              <input id="C5" type="text" NAME=monpays SIZE=20 MAXLENGTH=80 VALUE="Libye">
+              <input id="C5" type="text" NAME=monpays SIZE=20 MAXLENGTH=80 VALUE="">
+              <!-- fonction pour ajouter une ville -->
+
+              <script>
+                let ville = [];
+
+                // Fonction pour ajouter un pays
+                function myFunction() {
+                  const X = document.getElementById('C5');
+                  const nouvVi = X.value.trim();
+
+                  // Vérifie si le pays n'est pas vide et n'est pas déjà dans la liste
+                  if (nouvVi && !ville.includes(nouvVi)) {
+                    ville.push(nouvVi);
+                    mettreAJourListe();
+                  } else {
+                    alert(' Champs vide ou pays existant ');
+                  }
+
+                  // Réinitialise le champ de saisie
+                  X.value = '';
+                }
+
+                // Fonction pour mettre à jour l'affichage de la liste
+                function mettreAJourListe() {
+                  const liste = document.getElementById('lepays');
+
+                  liste.innerHTML = '';
+
+                  // Ajoute chaque pays à la liste
+                  ville.forEach(ville => {
+                    const option = document.createElement('option');
+                    option.textContent = ville;
+                    liste.appendChild(option);
+                  });
+                }
+              </script>
+
               <button type="button" onClick="myFunction()">Ajouter pays</button>
-            <TD></TD>
-  
+            <TD>
+
           <TR>
             <TD><B>Plateforme(s)</B>
             <TD> <input type=CHECKBOX NAME=materiel VALUE="Windows" CHECKED>Windows
@@ -67,11 +130,11 @@
                 <OPTION SELECTED>Internet
               </SELECT>
             <TD></TD>
-            </table>
+        </table>
       </center>
-  
+
     </fieldset>
-  
+
     <CENTER>
       <TABLE BORDER="0" CELLSPACING="0" CELLPADDING="10" WIDTH="95%">
         <TR>
@@ -82,8 +145,9 @@
           </TH>
       </TABLE>
     </CENTER>
-  
+
   </form>
 
 </body>
+
 </html>
