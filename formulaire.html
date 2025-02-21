@@ -120,42 +120,57 @@
               </SELECT>
 
               <B> Ajouter pays</B>
-              <input id="C5" type="text" NAME=monpays SIZE=20 MAXLENGTH=80 VALUE="libye">
+              <input id="C5" type="text" NAME=monpays SIZE=20 MAXLENGTH=80 VALUE="">
               <!-- fonction pour ajouter une ville -->
 
               <script>
-                let ville = [''];
-
-                // Fonction pour ajouter un pays
                 function myFunction() {
-                  const X = document.getElementById('C5');
-                  const nouvVi = X.value.trim();
+                  var novpays = document.getElementById('C5').value;
+                  var paysL = document.getElementById('lepays');
 
-                  // Vérifie si le pays n'est pas vide et n'est pas déjà dans la liste
-                  if (nouvVi && !ville.includes(nouvVi)) {
-                    ville.push(nouvVi);
-                    miseAJour();
-                  } else {
-                    alert(' Champs vide ou pays existant ');
+                  for (var i = 0; i < paysL.option; i++) {
+                    if (paysL.option[i].value == novpays)
+                      alert("  Champs vide ou pays exixtant  ");
+                    return;
+
                   }
 
-                  // Réinitialise le champ de saisie
-                  X.value = '';
+                  var newOption = document.createElement("option");
+                  newOption.text = novpays;
+                  paysL.add(newOption);
                 }
+                // let ville = [''];
 
-                // Fonction pour mettre à jour l'affichage de la liste
-                function miseAJour() {
-                  const liste = document.getElementById('lepays');
+                // // Fonction pour ajouter un pays
+                // function myFunction() {
+                //   const X = document.getElementById('C5');
+                //   const nouvVi = X.value.trim();
 
-                  liste.innerHTML = '';
+                //   // Vérifie si le pays n'est pas vide et n'est pas déjà dans la liste
+                //   if (nouvVi && !ville.includes(nouvVi)) {
+                //     ville.push(nouvVi);
+                //     miseAJour();
+                //   } else {
+                //     alert(' Champs vide ou pays existant ');
+                //   }
 
-                  // Ajoute chaque pays à la liste
-                  ville.forEach(ville => {
-                    const option = document.createElement('option');
-                    option.textContent = ville;
-                    liste.appendChild(option);
-                  });
-                }
+                //   // Réinitialise le champ de saisie
+                //   X.value = '';
+                // }
+
+                // // Fonction pour mettre à jour l'affichage de la liste
+                // function miseAJour() {
+                //   const liste = document.getElementById('lepays');
+
+                //   liste.innerHTML = '';
+
+                //   // Ajoute chaque pays à la liste
+                //   ville.forEach(ville => {
+                //     const option = document.createElement('option');
+                //     option.textContent = ville;
+                //     liste.appendChild(option);
+                //   });
+                // }
               </script>
 
               <button type="button" onClick="myFunction()">Ajouter pays</button>
@@ -186,7 +201,7 @@
       <TABLE BORDER="0" CELLSPACING="0" CELLPADDING="10" WIDTH="95%">
         <TR>
           <TH>
-            <input id="loc" type=button VALUE="  Enregistrer  " onclick=afficher()>
+            <input id="loc" type=button VALUE="  Soumettre formulaire  " onclick=afficher()>
             <!-- local storage -->
             <script>
 
